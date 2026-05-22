@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: geo-mvt-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+    # Para o ambiente local de desenvolvimento, não estamos usando usuário e senha.
+    # Se quiser adicionar segurança básica depois, descomente as linhas abaixo:
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: password
+volumes:
+  mongo_data:
+    name: geo-mvt-mongo-data
